@@ -12,6 +12,10 @@ require('dotenv').config()
 
 app.use(express.json())
 app.use(cors())
+cors
+  .addMapping('/**')
+  .allowedOrigins('https://your-frontend-url.up.railway.app')
+  .allowedMethods('GET', 'POST', 'PUT', 'DELETE')
 
 // Database Connection with MongoDB
 mongoose.connect(process.env.MONGODB_URI)
