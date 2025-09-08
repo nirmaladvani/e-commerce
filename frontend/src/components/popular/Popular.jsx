@@ -10,7 +10,7 @@ const Popular = () => {
 
   useEffect(() => {
     // fetch('http://localhost:4000/popularinwomen')
-    fetch('e-commerce-production-fa31.up.railway.app/popularinwomen')
+    fetch('http://e-commerce-production-fa31.up.railway.app/popularinwomen')
       .then((response) => response.json())
       .then((data) => setPopularProducts(data))
   }, [])

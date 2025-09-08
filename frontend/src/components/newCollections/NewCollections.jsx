@@ -10,7 +10,7 @@ const NewCollections = () => {
 
   useEffect(() => {
     // fetch('http://localhost:4000/newcollections')
-    fetch('e-commerce-production-fa31.up.railway.app/newcollections')
+    fetch('http://e-commerce-production-fa31.up.railway.app/newcollections')
       .then((response) => response.json())
       .then((data) => setNew_Collection(data))
   }, [])

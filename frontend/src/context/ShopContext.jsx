@@ -17,13 +17,13 @@ const ShopContextProvider = (props) => {
 
   useEffect(() => {
     // fetch('http://localhost:4000/allproducts')
-    fetch('e-commerce-production-fa31.up.railway.app/allproducts')
+    fetch('http://e-commerce-production-fa31.up.railway.app/allproducts')
       .then((response) => response.json())
       .then((data) => setAll_Proudct(data))
 
     if (localStorage.getItem('auth-token')) {
       // fetch('http://localhost:4000/getcart', {
-      fetch('e-commerce-production-fa31.up.railway.app/getcart', {
+      fetch('http://e-commerce-production-fa31.up.railway.app/getcart', {
         method: 'POST',
         headers: {
           Accept: 'application/form-data',
@@ -42,7 +42,7 @@ const ShopContextProvider = (props) => {
     // console.log(cartItems)
     if (localStorage.getItem('auth-token')) {
       // fetch('http://localhost:4000/addtocart', {
-      fetch('e-commerce-production-fa31.up.railway.app/addtocart', {
+      fetch('http://e-commerce-production-fa31.up.railway.app/addtocart', {
         method: 'POST',
         headers: {
           Accept: 'appplication/json',
@@ -60,7 +60,7 @@ const ShopContextProvider = (props) => {
     setCartItems((prev) => ({ ...prev, [itemId]: prev[itemId] - 1 }))
     if (localStorage.getItem('auth-token')) {
       // fetch('http://localhost:4000/removefromcart', {
-      fetch('e-commerce-production-fa31.up.railway.app/removefromcart', {
+      fetch('http://e-commerce-production-fa31.up.railway.app/removefromcart', {
         method: 'POST',
         headers: {
           Accept: 'appplication/form-data',

@@ -18,7 +18,7 @@ const LoginSignup = () => {
     console.log('Login Function Executed', formData)
     let responseData
     // await fetch('http://localhost:4000/login', {
-    await fetch('e-commerce-production-fa31.up.railway.app/login', {
+    await fetch('http://e-commerce-production-fa31.up.railway.app/login', {
       method: 'POST',
       headers: {
         Accept: 'application/form-data',
@@ -41,7 +41,7 @@ const LoginSignup = () => {
     console.log('Sign Up Function Executed', formData)
     let responseData
     // await fetch('http://localhost:4000/signup', {
-    await fetch('e-commerce-production-fa31.up.railway.app/signup', {
+    await fetch('http://e-commerce-production-fa31.up.railway.app/signup', {
       method: 'POST',
       headers: {
         Accept: 'application/form-data',
