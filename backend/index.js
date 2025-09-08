@@ -1,5 +1,4 @@
-// const port = 4000
-const port = process.env.PORT || 4000
+const port = 4000
 const express = require('express')
 const app = express()
 const mongoose = require('mongoose')
@@ -12,14 +11,7 @@ const { type } = require('os')
 require('dotenv').config()
 
 app.use(express.json())
-// app.use(cors())
-app.use(
-  cors({
-    origin: 'https://your-frontend-url.up.railway.app',
-    methods: ['GET', 'POST', 'PUT', 'DELETE'],
-    credentials: true,
-  })
-)
+app.use(cors())
 
 // Database Connection with MongoDB
 mongoose.connect(process.env.MONGODB_URI)
@@ -49,10 +41,7 @@ app.use('/images', express.static('upload/images'))
 app.post('/upload', upload.single('product'), (req, res) => {
   res.json({
     success: 1,
-    // image_url: `http://localhost:${port}/images/${req.file.filename}`,
-    image_url: `${req.protocol}://${req.get('host')}/images/${
-      req.file.filename
-    }`,
+    image_url: `http://localhost:${port}/images/${req.file.filename}`,
   })
 })
 
@@ -287,8 +276,7 @@ app.post('/getcart', fetchUser, async (req, res) => {
   res.json(userData.cartData)
 })
 
-// app.listen(port, (error) => {
-app.listen(port, '0.0.0.0', (error) => {
+app.listen(port, (error) => {
   if (!error) {
     console.log('Server Running on Port ' + port)
   } else {
