@@ -16,12 +16,14 @@ const ShopContextProvider = (props) => {
   const [cartItems, setCartItems] = useState(getDefaultCard())
 
   useEffect(() => {
-    fetch('http://localhost:4000/allproducts')
+    // fetch('http://localhost:4000/allproducts')
+    fetch('http://e-commerce.railway.internal/allproducts')
       .then((response) => response.json())
       .then((data) => setAll_Proudct(data))
 
     if (localStorage.getItem('auth-token')) {
-      fetch('http://localhost:4000/getcart', {
+      // fetch('http://localhost:4000/getcart', {
+      fetch('http://e-commerce.railway.internal/getcart', {
         method: 'POST',
         headers: {
           Accept: 'application/form-data',
@@ -39,7 +41,8 @@ const ShopContextProvider = (props) => {
     setCartItems((prev) => ({ ...prev, [itemId]: prev[itemId] + 1 }))
     // console.log(cartItems)
     if (localStorage.getItem('auth-token')) {
-      fetch('http://localhost:4000/addtocart', {
+      // fetch('http://localhost:4000/addtocart', {
+      fetch('http://e-commerce.railway.internal/addtocart', {
         method: 'POST',
         headers: {
           Accept: 'appplication/json',
@@ -56,7 +59,8 @@ const ShopContextProvider = (props) => {
   const removeFromCart = (itemId) => {
     setCartItems((prev) => ({ ...prev, [itemId]: prev[itemId] - 1 }))
     if (localStorage.getItem('auth-token')) {
-      fetch('http://localhost:4000/removefromcart', {
+      // fetch('http://localhost:4000/removefromcart', {
+      fetch('http://e-commerce.railway.internal/removefromcart', {
         method: 'POST',
         headers: {
           Accept: 'appplication/form-data',
