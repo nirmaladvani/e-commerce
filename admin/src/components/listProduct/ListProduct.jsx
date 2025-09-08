@@ -6,7 +6,7 @@ const ListProduct = () => {
   const [allproducts, setAllProducts] = useState([])
 
   const fetchInfo = async () => {
-    await fetch('http://localhost:4000/allproducts')
+    await fetch('http://e-commerce-production-fa31.up.railway.app/allproducts')
       .then((resp) => resp.json())
       .then((data) => {
         setAllProducts(data)
@@ -18,14 +18,17 @@ const ListProduct = () => {
   }, [])
 
   const remove_product = async (id) => {
-    await fetch('http://localhost:4000/removeproduct', {
-      method: 'POST',
-      headers: {
-        Accept: 'application/json',
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({ id: id }),
-    })
+    await fetch(
+      'http://e-commerce-production-fa31.up.railway.app/removeproduct',
+      {
+        method: 'POST',
+        headers: {
+          Accept: 'application/json',
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ id: id }),
+      }
+    )
     await fetchInfo()
   }
 
