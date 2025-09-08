@@ -17,10 +17,16 @@ const Navbar = () => {
   }
   return (
     <div className='navbar'>
-      <div className='nav-logo'>
-        <img src={logo} alt='' />
-        <p>SHOPPER</p>
-      </div>
+      <Link
+        onClick={() => setmenu('shop')}
+        style={{ textDecoration: 'none' }}
+        to='/'
+      >
+        <div className='nav-logo'>
+          <img src={logo} alt='' />
+          <p>SHOPPER</p>
+        </div>
+      </Link>
       <img
         className='nav-dropdown'
         onClick={dropdown_toggle}
@@ -54,9 +60,21 @@ const Navbar = () => {
         </li>
       </ul>
       <div className='nav-login-cart'>
-        <Link style={{ textDecoration: 'none' }} to='/login'>
-          <button>Login</button>
-        </Link>
+        {localStorage.getItem('auth-token') ? (
+          <button
+            onClick={() => {
+              localStorage.removeItem('auth-token')
+              window.location.replace('/')
+            }}
+          >
+            Logout
+          </button>
+        ) : (
+          <Link style={{ textDecoration: 'none' }} to='/login'>
+            <button>Login</button>
+          </Link>
+        )}
+
         <Link style={{ textDecoration: 'none' }} to='/cart'>
           <img src={cart_icon} alt='' />
         </Link>
